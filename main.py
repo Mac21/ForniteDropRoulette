@@ -1,8 +1,8 @@
 import random
 
 
-letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+letters = [chr(x) for x in range(97, 107)]
+locations = [(y, i+1) for i, l in enumerate(letters) for y in letters]
 
 invalid_locations = [
     ('a', 7), ('a', 8), ('a', 9), ('a', 10),
@@ -18,17 +18,15 @@ invalid_locations = [
 ]
 
 
-def get_location():
-    return random.choice(letters), random.choice(numbers)
-
-
 def main():
     while True:
-        loc = get_location()
-        if loc not in invalid_locations:
-            print(loc)
+        choice = input("(r)oll | (q)uit")
+        if choice.lower() == 'r':
+            loc = random.choice(locations)
+            if loc not in invalid_locations:
+                print(loc)
+        elif choice.lower() == 'q':
             break
-
 
 if __name__ == "__main__":
     main()
