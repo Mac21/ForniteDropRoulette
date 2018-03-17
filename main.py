@@ -20,13 +20,17 @@ invalid_locations = [
 
 def main():
     while True:
-        choice = input("(r)oll | (q)uit")
+        choice = input("(r)oll | (q)uit > ")
         if choice.lower() == 'r':
-            loc = random.choice(locations)
-            if loc not in invalid_locations:
-                print(loc)
+            while True:
+                loc = random.choice(locations)
+                if loc not in invalid_locations:
+                    print(loc)
+                    break
         elif choice.lower() == 'q':
             break
+        else:
+            print("Invalid option")
 
 if __name__ == "__main__":
     main()
